@@ -1,0 +1,27 @@
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class PlayResponse {
+
+    @JsonProperty("data")
+    Data data;
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public class Data {
+        @JsonProperty("wager")
+        Wager wager;
+
+
+        @JsonIgnoreProperties(ignoreUnknown = true)
+        public class Wager {
+            @JsonProperty("wagerid")
+            String wagerId;
+            @JsonProperty("bets")
+            ArrayList<Bet> bets;
+        }
+    }
+}
